@@ -1,6 +1,6 @@
 package transport;
 
-public abstract class transport {
+public abstract class Transport {
     private String brand;
     private String model;
     private int year;
@@ -8,12 +8,31 @@ public abstract class transport {
     public String color;
     public int maxSpeed;
 
-    public transport(String brand, String model, int year, String country,String color, int maxSpeed) {
+    public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
+        if (brand == null) {
+            brand = "default";
+        }
         this.brand = brand;
+
+        if (model == null) {
+            model = "default";
+        }
         this.model = model;
+
+        if (year < 0) {
+            year = 2000;
+        }
         this.year = year;
+
+        if (country == null) {
+            country = "default";
+        }
         this.country = country;
-        this.color = "белый";
+
+        if (color == null) {
+            color = "белого";
+        }
+        this.color = color;
         this.maxSpeed = 100;
     }
 
@@ -55,5 +74,6 @@ public abstract class transport {
             this.maxSpeed = maxSpeed;
         }
     }
+
     public abstract void refill();
 }
