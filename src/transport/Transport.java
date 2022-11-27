@@ -3,12 +3,10 @@ package transport;
 public abstract class Transport {
     private String brand;
     private String model;
-    private int year;
-    private String country;
-    public String color;
-    public int maxSpeed;
+    public double engineVolume;
 
-    public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
+
+    public Transport(String brand, String model, double engineVolume) {
         if (brand == null) {
             brand = "default";
         }
@@ -18,24 +16,13 @@ public abstract class Transport {
             model = "default";
         }
         this.model = model;
-
-        if (year < 0) {
-            year = 2000;
+        if (engineVolume <= 0) {
+            engineVolume = 1.5;
         }
-        this.year = year;
+        this.engineVolume = engineVolume;
 
-        if (country == null) {
-            country = "default";
-        }
-        this.country = country;
 
-        if (color == null) {
-            color = "белого";
-        }
-        this.color = color;
-        this.maxSpeed = 100;
     }
-
 
     public String getBrand() {
         return brand;
@@ -45,35 +32,25 @@ public abstract class Transport {
         return model;
     }
 
-    public int getYear() {
-        return year;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color == null && !color.isEmpty() && !color.isBlank()) {
-
-            this.color = color;
+    public void setEngineVolume(double engineVolume) {
+        if (engineVolume <= 0) {
+            engineVolume = 6;
         }
+        this.engineVolume = engineVolume;
+    }
+    public void startMove() {
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+
+    public void stopMove() {
     }
 
-    public void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed <= 0) {
-
-            this.maxSpeed = maxSpeed;
-        }
+    @Override
+    public String toString() {
+        return "Transport{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume + '}';
     }
-
-    public abstract void refill();
 }
