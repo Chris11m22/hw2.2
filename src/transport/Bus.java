@@ -1,8 +1,18 @@
 package transport;
 
 public class Bus extends Transport implements Competing {
-    public Bus(String brand, String model, double engineVolume) {
+    private Capacity capacity;
+    public Bus(String brand, String model, double engineVolume,Capacity capacity) {
         super(brand, model, engineVolume);
+        this.capacity = capacity;
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Capacity capacity) {
+        this.capacity = capacity;
     }
 
     public void startMove() {
@@ -12,6 +22,17 @@ public class Bus extends Transport implements Competing {
 
     public void stopMove() {
         System.out.print("Автобус останавливается");
+    }
+
+    @Override
+    public void printType() {
+        if (capacity == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }else {
+            System.out.println("Тип вместимости: " + capacity);
+        }
+
+
     }
 
     @Override
