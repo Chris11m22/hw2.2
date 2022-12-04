@@ -1,0 +1,69 @@
+package transport;
+
+public class Car extends Transport implements Competing {
+    private TypeOfBody typeOfBody;
+
+
+    public Car(String brand, String model, double engineVolume, TypeOfBody typeOfBody) {
+        super(brand, model, engineVolume);
+        this.typeOfBody = typeOfBody;
+
+
+    }
+
+    public TypeOfBody getTypeOfBody() {
+        return typeOfBody;
+    }
+
+    public void setTypeOfBody(TypeOfBody typeOfBody) {
+        this.typeOfBody = typeOfBody;
+    }
+    public void startMove() {
+        System.out.print("Легковой автомобиль начинает движение");
+    }
+
+
+    public void stopMove() {
+        System.out.print("Легковой автомобиль останавливается");
+    }
+    public boolean diagnostics() {
+        return false;
+}
+    @Override
+    public void printType() {
+        if (typeOfBody == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }else {
+            System.out.println("Тип кузова: " + typeOfBody);
+        }
+
+    }
+
+
+    @Override
+    public String toString() {
+        return "Car{"  + "brand = " + getBrand() + ", model = " + getModel() + getTypeOfBody() + ", engineVolume = " + engineVolume + '}';
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Легковой автомобиль : заезжает на Пит-стоп");
+
+    }
+
+    @Override
+    public void bestTime() {
+        System.out.println("Легковой автомобиль : лучшее время круга ");
+
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Легковой автомобиль : Максимальное время");
+
+    }
+}
+
+
+
+//
