@@ -14,7 +14,7 @@ public class Main {
 
         Car lada = new Car("Lada", "Granta", 1.7, TypeOfBody.CMD_SEDAN);
         Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, TypeOfBody.CMD_CROSSOVER);
-        Car bmw = new Car("BMW", "Z8", 3.0,  TypeOfBody.CMD_COUPE);
+        Car bmw = new Car("BMW", "Z8", 3.0, TypeOfBody.CMD_COUPE);
         Car kia = new Car("KIA", "Sportage 4", 2.4, TypeOfBody.CMD_MINIVAN);
         Car hyundai = new Car("Hyundai", "Avante", 1.6, TypeOfBody.CMD_HATCHBACK);
         Car ferrari = new Car("Ferrari", "F40", 5.1, TypeOfBody.CMD_SUV);
@@ -26,6 +26,7 @@ public class Main {
 //        System.out.println(ferrari);
 
 
+
         Truck valdai = new Truck("Валдай ", "NEXT", 7.2, Mass.N1);
         Truck gaz = new Truck("ГАЗель ", "NN", 7.2, Mass.N1);
         Truck jac = new Truck("JAC", "N-35/25", 7.2, Mass.N2);
@@ -34,6 +35,7 @@ public class Main {
 //        System.out.println(gaz);
 //        System.out.println(jac);
 //        System.out.println(tonar);
+        diagnostics(lada,audi,bmw,kia,hyundai,ferrari,valdai,gaz,jac,tonar);
 
         DriverD jack = new DriverD("Jack", true, 5);
         jack.driverD(max);
@@ -41,6 +43,15 @@ public class Main {
         mike.driverC(tonar);
         DriverB will = new DriverB<>("Will", true, 7);
         will.driverB(audi);
+    }
+    private static void diagnostics (Transport... transports){
+        for (int i = 0; i < transports.length; i++) {
+            if (!transports[i].diagnostics()){
+                throw new RuntimeException("Автомобиль " + transports[i].getBrand() +  "прошел диагностику");
+
+            }
+
+        }
 
     }
 }

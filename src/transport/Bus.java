@@ -23,7 +23,10 @@ public class Bus extends Transport implements Competing {
     public void stopMove() {
         System.out.print("Автобус останавливается");
     }
-
+    public boolean diagnostics() {
+        System.out.println("Автобус" + getModel() + "в диагностике не требуется");
+        return true;
+    }
     @Override
     public void printType() {
         if (capacity == null) {

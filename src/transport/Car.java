@@ -26,7 +26,9 @@ public class Car extends Transport implements Competing {
     public void stopMove() {
         System.out.print("Легковой автомобиль останавливается");
     }
-
+    public boolean diagnostics() {
+        return false;
+}
     @Override
     public void printType() {
         if (typeOfBody == null) {

@@ -1,14 +1,20 @@
 package transport;
 
-public class Driver {
+import jdk.jfr.Category;
+
+public class Driver<C extends Category> {
     private String name;
     private boolean licence;
     private int experience;
+    private C category;
 
-    public Driver(String name, boolean licence, int experience) {
+    public Driver(String name, boolean licence, int experience, C category) {
         this.name = name;
         this.licence = licence;
         this.experience = experience;
+    }
+
+    public Driver(String name, boolean licence, int experience) {
     }
 
     public String getName() {
@@ -33,6 +39,17 @@ public class Driver {
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    public C getCategory() {
+        return category;
+    }
+
+    public void setCategory(C category) {
+        if ( category == null) {
+            throw new IllegalArgumentException("Необходимо указать тип прав!");
+        }
+        this.category = category;
     }
 
     public void startMove() {

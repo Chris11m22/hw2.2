@@ -26,6 +26,10 @@ public class Truck extends Transport implements Competing{
         System.out.print("Грузовой автомобиль останавливается");
     }
 
+    public boolean diagnostics() {
+        return true;
+    }
+
     @Override
     public void printType() {
         if (mass == null) {
