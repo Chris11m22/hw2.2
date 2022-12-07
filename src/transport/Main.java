@@ -44,14 +44,16 @@ public class Main {
         DriverB will = new DriverB<>("Will", true, 7);
         will.driverB(audi);
     }
-    private static void diagnostics (Transport... transports){
-        for (int i = 0; i < transports.length; i++) {
-            if (!transports[i].diagnostics()){
-                throw new RuntimeException("Автомобиль " + transports[i].getBrand() +  "прошел диагностику");
+    public static void diagnostics(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                if (!transport.diagnostics())
+                    throw new RuntimeException();
+            } catch (RuntimeException e) {
+                System.out.println(transport.getClass().getSimpleName() + " " + transport.getBrand() + " " + transport.getModel() + " необходимо пройти диагностику.");
+            }
+        }
 
             }
 
         }
-
-    }
-}

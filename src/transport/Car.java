@@ -26,9 +26,7 @@ public class Car extends Transport implements Competing {
     public void stopMove() {
         System.out.print("Легковой автомобиль останавливается");
     }
-    public boolean diagnostics() {
-        return false;
-}
+    private boolean diagnostics;
     @Override
     public void printType() {
         if (typeOfBody == null) {
@@ -37,6 +35,15 @@ public class Car extends Transport implements Competing {
             System.out.println("Тип кузова: " + typeOfBody);
         }
 
+    }
+    @Override
+    public boolean diagnostics() {
+        if (diagnostics) {
+            System.out.println("Автомобиль " + getBrand() + " " + getModel() + " прошел диагностику.");
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -61,6 +68,13 @@ public class Car extends Transport implements Competing {
     public void maxSpeed() {
         System.out.println("Легковой автомобиль : Максимальное время");
 
+    }
+    public boolean isDiagnostic() {
+        return diagnostics;
+    }
+
+    public void setDiagnostic(boolean diagnostic) {
+        this.diagnostics = diagnostic;
     }
 }
 
